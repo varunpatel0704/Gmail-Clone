@@ -1,0 +1,17 @@
+.navigation, .navigation>ul{
+  width: 100%;
+}
+.nav-li{
+  width: 100%;
+  outline: 1px solid;
+  display: flex;    
+}
+
+.show{
+  width: 15rem;  
+  display: flex;  
+  justify-content: space-between;
+}
+.hide{
+  display: none;
+}
