@@ -1,0 +1,11 @@
+.main-layout{
+  height: 100vh;
+}
+
+.wrapper{
+  width: 100%;  
+  outline: 2px solid grey;  
+  display: flex;  
+  justify-content: space-between;
+  min-height: calc(100vh - 4rem);
+}

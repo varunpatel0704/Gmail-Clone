@@ -1,0 +1,57 @@
+*{
+  /* outline: 1px solid; */
+}
+.gmail-logo{    
+  max-width: 7rem;
+  margin-left: 0.5rem;
+  object-fit: contain;
+}
+
+.top-bar-button{
+  /* flex-shrink: 0; */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin:  0 0.2rem;
+  border-radius: 50%;
+}
+.top-bar-button:hover{
+  background-color: rgba(128, 128, 128, 0.107);
+}
+
+.top-bar{
+  padding: 0.5rem 0;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar div{  
+  display: flex;
+  align-items: center;
+}
+
+.top-bar-left{    
+  width: 20%;
+}
+
+
+.top-bar-mid{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;    
+}
+
+.search-bar{
+  width: 77%;
+}
+
+.profile{
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: grey;
+}
