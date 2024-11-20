@@ -1,25 +1,21 @@
-.searchBar{
-  /* outline: 2px solid white; */
-  width: 100%;
-  /* background-color: rgba(167, 227, 255, 0.463); */
+.searchBar{  
+  width: 100%;  
   background-color: rgba(227, 235, 249, 0.81);
   display: flex;
   align-items: center;  
-  padding: 0.6rem 0.5rem;
+  padding: 0.6rem 0.4rem;
   border-radius: 24px;
   max-height: 3rem;
   width: 100%;
-  >input{
-    /* outline: 2px solid white; */
+  
+  >input{    
     width: 100%;
-    /* color: white; */
+    /* flex: 1; */    
     background-color: transparent;
     border: none;                  
-  }
-
+  }  
   >input:focus{
     outline: none;    
   }
-
 }
 

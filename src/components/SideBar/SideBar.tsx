@@ -16,25 +16,29 @@ function NavListItem({
   visible: boolean;
   src: string;
   title: string;
-  options?: navListItem["options"];
+  options?: NavListItem["options"];
 }) {
+  
   return (
-    <li className="nav-li">
-      <img src={src} alt={title} />
-      <div className={`${visible?'show':'hide'}`}>
+    <li className={`nav-li ${visible ? "show" : "hide"}`}>
+      <div className="nav-icon-container">
+        <img src={src} alt={title} className="nav-icon" />
+        <div className="nav-icon-shadow"></div>
+      </div>
+      <div className="details">
         <span>{title}</span>
-        {options?.hasValue && <span> {options.value} </span>}
+        {options?.hasValue && <span className="value"> {options.value} </span>}
       </div>
     </li>
   );
 }
 
-interface navListItem {
+interface NavListItem {
   src: string;
   title: string;
   options?: { hasValue: boolean; value: number };
 }
-const navListItems: navListItem[] = [
+const navListItems: NavListItem[] = [
   {
     title: "Compose",
     src: compose,
@@ -66,10 +70,11 @@ const navListItems: navListItem[] = [
 ];
 
 function SideBar() {
-  const visible = false;
+  const visible = true;
 
   return (
     <nav className="navigation">
+    
       <ul className="">
         {navListItems.map(({ src, title, options }) => (
           <NavListItem

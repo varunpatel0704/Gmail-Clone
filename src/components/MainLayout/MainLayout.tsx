@@ -2,28 +2,80 @@ import { Outlet } from "react-router-dom";
 import AppBar from "../AppBar/AppBar";
 import SideBar from "../SideBar/SideBar";
 import TopBar from "../TopBar/TopBar";
-import "./MainLayout.css";
+import styles from "./MainLayout.module.css";
 
 function MainLayout() {
   return (
-    <div className="main-layout">
+    <main className={`${styles.mainLayout}`}>
       <header>
         <TopBar />
       </header>
       
-      <section className="wrapper">
-        <aside className="side-bar">
+      <section className={`${styles.wrapper}`}>
+        <aside className={`${styles.sideBar}`}>
           <SideBar />
         </aside>
-        <main className="content">
-          <Outlet />
+        <main className={`${styles.contentContainer}`}>
+          
+          <div className={`${styles.content}`}>
+            {/* <Outlet /> */}
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+          </div>
         </main>
-        <aside className="app-bar">
+        <aside className="appBar">
           <AppBar />
         </aside>
       </section>
-    </div>
+    </main>  
   );
+  
 }
 
 export default MainLayout;
