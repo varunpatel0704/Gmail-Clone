@@ -2,7 +2,6 @@ import { TopBarButton } from "../TopBar/TopBar";
 import search from '../../assets/search.svg';
 import tune from '../../assets/tune.svg';
 import close from '../../assets/close.svg';
-
 import styles from './SearchBar.module.css';
 
 function SearchBar() {
@@ -11,27 +10,26 @@ function SearchBar() {
       <TopBarButton
         onClick={() => null}
         src={search}
-        alt="search-icon"
-        className="search-icon top-bar-icon"
+        alt="Search Icon"        
+        className="searchIcon topBarIcon"
       />
 
       <input
         type="text"
-        placeholder="Search mail"
-        className="search-bar-input"
+        placeholder="Search mail"        
       />
 
       <TopBarButton
         onClick={() => null}
         src={close}
         alt="close-icon"
-        className="close-icon top-bar-icon"
+        className="closeIcon topBarIcon"
       />
       <TopBarButton
         onClick={() => null}
         src={tune}
         alt="tune-icon"
-        className="tune-icon top-bar-icon"
+        className="tuneIcon topBarIcon"
       />
     </div>
   );

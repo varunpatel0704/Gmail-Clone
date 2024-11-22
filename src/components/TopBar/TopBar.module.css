@@ -1,0 +1,60 @@
+
+.gmailLogo{   
+  width: 7rem;    
+  object-fit: contain;
+}
+
+.topBarButton{
+  flex-shrink: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;  
+  padding: 0.5rem;  
+  margin: 0 0.2rem;
+  border-radius: 50%;
+  /* outline: 1px solid; */
+}
+
+.topBarButton:hover{
+  background-color: rgba(128, 128, 128, 0.107);
+}
+
+.topBar, .topBarMid, .topBarLeft, .topBarRight{
+  display: flex;
+  align-items: center;
+  /* outline: 1px solid; */
+}
+
+.topBar{    
+  height: 4rem;  
+  align-items: unset;
+  padding-inline: 0.5rem;
+  /* justify-content: space-between; */
+}
+
+/* .topBar div{  
+  display: flex;
+  align-items: center;
+} */
+
+.topBarLeft{
+  width: 15.5rem;
+  justify-content: start;
+  column-gap: 0.5rem;
+  /* padding-left: 0.5rem; */
+}
+
+.topBarMid{
+  flex: 1;      
+}
+
+.searchBar{
+  width: 85%;  
+}
+
+.profile{
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: grey;
+}

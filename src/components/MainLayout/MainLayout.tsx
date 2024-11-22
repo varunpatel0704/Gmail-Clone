@@ -6,18 +6,18 @@ import styles from "./MainLayout.module.css";
 
 function MainLayout() {
   return (
-    <main className={`${styles.mainLayout}`}>
+    <main className={styles.mainLayout}>
       <header>
         <TopBar />
       </header>
       
-      <section className={`${styles.wrapper}`}>
-        <aside className={`${styles.sideBar}`}>
+      <section className={styles.wrapper}>
+        <aside className={styles.sideBar}>
           <SideBar />
         </aside>
-        <main className={`${styles.contentContainer}`}>
+        <main className={styles.contentContainer}>
           
-          <div className={`${styles.content}`}>
+          <div className={styles.content}>
             {/* <Outlet /> */}
             <h1>hello</h1>
             <h1>hello</h1>
@@ -69,7 +69,7 @@ function MainLayout() {
             <h1>hello</h1>
           </div>
         </main>
-        <aside className="appBar">
+        <aside className={styles.appBar}>
           <AppBar />
         </aside>
       </section>

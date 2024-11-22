@@ -5,7 +5,7 @@ import compose from "../../assets/compose.svg";
 import inbox from "../../assets/inbox.svg";
 import send from "../../assets/send.svg";
 import arrowDown from "../../assets/arrow_down.svg";
-import "./SideBar.css";
+import styles from "./SideBar.module.css";
 
 function NavListItem({
   visible,
@@ -16,18 +16,19 @@ function NavListItem({
   visible: boolean;
   src: string;
   title: string;
-  options?: NavListItem["options"];
+  options?: NavListItem['options'];
 }) {
-  
+  visible=true;
   return (
-    <li className={`nav-li ${visible ? "show" : "hide"}`}>
-      <div className="nav-icon-container">
-        <img src={src} alt={title} className="nav-icon" />
-        <div className="nav-icon-shadow"></div>
+    <li className={`${styles.navLi} ${visible ? `${styles.show} ${styles.active}` : styles.hide}`}>
+      <div className={styles.navIconContainer}>
+        <img src={src} alt={title}  className={`${styles.navIcon}`} />        
+        <div className={styles.navIconShadow}></div>
       </div>
-      <div className="details">
+
+      <div className={styles.details}>
         <span>{title}</span>
-        {options?.hasValue && <span className="value"> {options.value} </span>}
+        {options?.hasValue && <span className={styles.value}> {options.value} </span>}
       </div>
     </li>
   );
@@ -36,7 +37,7 @@ function NavListItem({
 interface NavListItem {
   src: string;
   title: string;
-  options?: { hasValue: boolean; value: number };
+  options?: { hasValue: boolean; value: string|number };
 }
 const navListItems: NavListItem[] = [
   {
@@ -67,15 +68,24 @@ const navListItems: NavListItem[] = [
     title: "More",
     src: arrowDown,
   },
+  {
+    src: add,
+    title: '',
+    options:{
+      hasValue: true,
+      value: 'Labels'
+    }
+
+  },
 ];
 
 function SideBar() {
   const visible = true;
 
   return (
-    <nav className="navigation">
+    <nav className={styles.navigation}>
     
-      <ul className="">
+      <ul className={styles.navigationList}>
         {navListItems.map(({ src, title, options }) => (
           <NavListItem
             key={title}

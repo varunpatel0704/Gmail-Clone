@@ -4,22 +4,26 @@
   flex-direction: column;
 }
 
-.wrapper{    
-  /* height: 100%; */
+.wrapper{      
   flex: 1;
   display: flex;    
   justify-content: space-between;
+  overflow: auto; 
 }
 
 .sideBar{
-  max-width: 14rem;  
+  max-width: 16rem;    
+  overflow: auto;
 }
 
-.contentContainer{
-  /* height: 100%;   */
+.appBar{
+  overflow: auto;
+}
+
+.contentContainer{  
   padding: 1rem 0;
   flex: 1;
-  border-radius: 24px;
+  border-radius: 15px;
   background: white;
 }
 
