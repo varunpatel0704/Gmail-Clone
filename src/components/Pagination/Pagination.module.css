@@ -1,0 +1,9 @@
+.container{
+  display: flex; 
+  align-items: center;
+  /* outline: 1px solid; */
+  
+  .text{
+    font-size: small;
+  }
+}

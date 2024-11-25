@@ -1,0 +1,12 @@
+.toolBar{
+  /* outline: 1px solid; */
+  min-height: 3rem; 
+  padding: 0 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}

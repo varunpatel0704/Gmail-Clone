@@ -5,6 +5,8 @@ import apps from "../../assets/apps.svg";
 import help from "../../assets/help.svg";
 import styles from "./TopBar.module.css";
 import SearchBar from "../SearchBar/SearchBar";
+import { MouseEvent } from "react";
+import IconButton from "../IconButton/IconButton";
 
 export function TopBarButton({
   onClick,
@@ -12,7 +14,7 @@ export function TopBarButton({
   alt,
   className = "topBarIcon",
 }: {
-  onClick: () => unknown;
+  onClick: (event: MouseEvent<HTMLButtonElement>)=>unknown;  
   src: string;
   alt: string;
   className?: string;
@@ -27,12 +29,8 @@ export function TopBarButton({
 function TopBar() {
   return (
     <div className={`${styles.topBar}`}>
-      <div className={`${styles.topBarLeft}`}>
-        <TopBarButton
-          onClick={() => null}
-          src={menu}
-          alt="Menu icon"          
-        />
+      <div className={`${styles.topBarLeft}`}>        
+        <IconButton src={menu} alt="Menue" onClick={()=>null}/>
         <img src={logo} alt="Gmail Logo" className={`${styles.gmailLogo}`} />
       </div>
 

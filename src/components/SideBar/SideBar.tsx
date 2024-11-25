@@ -4,7 +4,7 @@ import add from "../../assets/add.svg";
 import compose from "../../assets/compose.svg";
 import inbox from "../../assets/inbox.svg";
 import send from "../../assets/send.svg";
-import arrowDown from "../../assets/arrow_down.svg";
+import down from "../../assets/down.svg";
 import styles from "./SideBar.module.css";
 
 function NavListItem({
@@ -66,7 +66,7 @@ const navListItems: NavListItem[] = [
   },
   {
     title: "More",
-    src: arrowDown,
+    src: down,
   },
   {
     src: add,

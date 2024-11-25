@@ -1,0 +1,54 @@
+.div{
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  /* outline: 1px solid; */
+  
+  >*{
+    flex-shrink: 0;
+  }
+}
+
+.checkBoxContainer{ 
+  display: flex;  
+  align-self: stretch;  
+  /* outline: 1px solid; */
+  
+  span{
+    /* outline: 1px solid;     */
+    display: flex;            
+    position: relative;   
+  } 
+  
+  .checkbox, .dropdown{  
+    border: none;
+    background-color: transparent;
+    position: relative;
+
+    &::before{
+      content: '';
+      border-radius: 4px;
+      position: absolute;  
+      height: 100%;
+      width: 150%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+    }
+    &:hover::before{
+      background-color: rgba(128, 128, 128, 0.107);          
+    }
+  }
+
+  .dropdown{  
+    &::before{
+      width: 100%;
+    }
+  }  
+}
+
+.mailActions{  
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}

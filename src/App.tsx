@@ -8,7 +8,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout/>}>
-        <Route path="/inbox" element={<Inbox />} />
+        <Route index element={<Inbox />} />
         <Route path="/sent" element={<Sent />} />
         <Route path="/email/:id" element={<MailDetails />} />
       </Route>
