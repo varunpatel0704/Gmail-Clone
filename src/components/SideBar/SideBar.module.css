@@ -18,88 +18,52 @@
   border-top-right-radius: 24px;
   border-bottom-right-radius: 24px;
 
-  /* outline: 1px solid; */
+  
+  .iconContainer{
+    flex-shrink: 0;    
+  } 
 }
 
 .navLi:first-child{  
   width: fit-content;  
   
   margin: 0.5rem;
-  margin-bottom: 1.1rem;
-  padding: 0.7rem;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem;
 
   border-radius: 15px;
   background-color: skyblue;
   
-  &:hover{
-    background-color: skyblue;
-  }
-  
   .details{
     width: fit-content;    
-  }
-
-  .navIconShadow{
-    display: none;
   }
 }
 
 .navLi:last-child{
-  margin-top: 1.2rem;
-  flex-direction: row-reverse;
+  margin-top: 1.2rem;  
   
-  .details{
-    flex-direction: row-reverse;    
-  }
-  .value{
+  .details{    
     font-size: medium;
-    padding-left: 0.3rem;
     font-weight: 500;
-  }
-  
-  &:hover{
-    background-color: transparent;
-  }
-
-  .navIconShadow:hover{
-    background-color: rgba(128, 128, 128, 0.107); 
-  }
+  }   
 }
 
-.navIconContainer{  
-  width: 2rem;
-  height: 2rem;
-  
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-}
-
-.navIconShadow{
-  position: absolute;  
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-}
-
-.hide{    
-  .navIconShadow:hover{
-    background-color: rgba(128, 128, 128, 0.107);  
-  }  
+.hide{        
   .details{
     display: none;
   }
 }
 
 .show{  
-  margin-right: 1.2rem;
+  margin-right: 1rem;
   width: 15rem;
 
-  &:hover{
+  &:not(:last-child, :first-child):hover{
     background-color: rgba(128, 128, 128, 0.107);
+    cursor: pointer;
+  }
+  &:last-child{
+    flex-direction: row-reverse;   
   }
 
   .details{

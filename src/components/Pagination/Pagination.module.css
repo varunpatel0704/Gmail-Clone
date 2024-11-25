@@ -4,6 +4,12 @@
   /* outline: 1px solid; */
   
   .text{
+    padding: 0.5rem;
+    border-radius: 4px;
     font-size: small;
+    &:hover{
+      cursor: pointer;
+      background: rgba(128, 128, 128, .107);
+    }
   }
 }
