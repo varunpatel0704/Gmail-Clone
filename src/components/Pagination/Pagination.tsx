@@ -1,5 +1,4 @@
-import left from '../../assets/left.svg';
-import right from '../../assets/right.svg';
+import { leftIcon, rightIcon } from '../../assets';
 import IconButton from '../IconButton/IconButton';
 import styles from './Pagination.module.css';
 
@@ -10,8 +9,8 @@ function Pagination() {
   return (
     <div className={styles.container}>
       <div className={styles.text}><span>{start}</span>–<span>{end}</span> of <span>{total}</span></div>
-      <div><IconButton src={left} onClick={()=>null} alt="Newer" width={20}/></div>
-      <div><IconButton src={right} onClick={()=>null} alt="Older" width={20}/></div>      
+      <div><IconButton src={leftIcon} onClick={()=>null} alt="Newer" width={20}/></div>
+      <div><IconButton src={rightIcon} onClick={()=>null} alt="Older" width={20}/></div>      
     </div>
   )
 }

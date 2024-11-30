@@ -1,11 +1,13 @@
-import star from "../../assets/star.svg";
-import clock from "../../assets/clock.svg";
-import add from "../../assets/add.svg";
-import compose from "../../assets/compose.svg";
-import inbox from "../../assets/inbox.svg";
-import send from "../../assets/send.svg";
-import down from "../../assets/down.svg";
 import styles from "./SideBar.module.css";
+import {
+  starIcon,
+  clockIcon,
+  addIcon,
+  composeIcon,
+  inboxIcon,
+  sendIcon,
+  downIcon,  
+} from "../../assets";
 import IconButton from "../IconButton/IconButton";
 
 function NavListItem({
@@ -13,23 +15,34 @@ function NavListItem({
   src,
   title,
   options,
-  hoverEffect
+  hoverEffect,
 }: {
   visible: boolean;
   src: string;
   title: string;
-  options?: NavListItem['options'];
-  hoverEffect?:boolean;
+  options?: NavListItem["options"];
+  hoverEffect?: boolean;
 }) {
   return (
-    <li className={`${styles.navLi} ${visible ? `${styles.show} ${styles.active}` : styles.hide}`}>
+    <li
+      className={`${styles.navLi} ${
+        visible ? `${styles.show} ${styles.active}` : styles.hide
+      }`}
+    >
       <div className={styles.iconContainer}>
-        <IconButton src={src} alt={title} onClick={()=>null} hoverEffect={hoverEffect}/>
+        <IconButton
+          src={src}
+          alt={title}
+          onClick={() => null}
+          hoverEffect={hoverEffect}
+        />
       </div>
 
       <div className={styles.details}>
         <span>{title}</span>
-        {options?.hasValue && <span className={styles.value}> {options.value} </span>}
+        {options?.hasValue && (
+          <span className={styles.value}> {options.value} </span>
+        )}
       </div>
     </li>
   );
@@ -38,16 +51,16 @@ function NavListItem({
 interface NavListItem {
   src: string;
   title: string;
-  options?: { hasValue: boolean; value: string|number };
+  options?: { hasValue: boolean; value: string | number };
 }
 const navListItems: NavListItem[] = [
   {
     title: "Compose",
-    src: compose,
+    src: composeIcon,
   },
   {
     title: "Inbox",
-    src: inbox,
+    src: inboxIcon,
     options: {
       hasValue: true,
       value: 4152,
@@ -55,49 +68,49 @@ const navListItems: NavListItem[] = [
   },
   {
     title: "Starred",
-    src: star,
+    src: starIcon,
   },
   {
     title: "Snoozed",
-    src: clock,
+    src: clockIcon,
   },
   {
     title: "Sent",
-    src: send,
+    src: sendIcon,
   },
   {
     title: "More",
-    src: down,
+    src: downIcon,
   },
   {
-    src: add,
-    title: 'Labels',
+    src: addIcon,
+    title: "Labels",
   },
 ];
 
 function SideBar() {
-  const visible = true;
+  const visible = false;
 
   return (
     <nav className={styles.navigation}>
-    
       <ul className={styles.navigationList}>
         {navListItems.map(({ src, title, options }) => {
           let hoverEffect;
-          if(title === 'Compose') hoverEffect = false;
-          else if(title === 'Labels') hoverEffect = true;
+          if (title === "Compose") hoverEffect = false;
+          else if (title === "Labels") hoverEffect = true;
           else hoverEffect = !visible;
 
           return (
-          <NavListItem
-            key={title}
-            src={src}
-            title={title}
-            visible={visible}
-            options={options}
-            hoverEffect={hoverEffect}
-          />
-        )})}
+            <NavListItem
+              key={title}
+              src={src}
+              title={title}
+              visible={visible}
+              options={options}
+              hoverEffect={hoverEffect}
+            />
+          );
+        })}
       </ul>
     </nav>
   );

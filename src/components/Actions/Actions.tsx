@@ -1,14 +1,16 @@
-import checkBoxBlank from "../../assets/checkBoxBlank.svg";
-import checkBoxFilled from "../../assets/checkBoxFilled.svg";
-import refresh from "../../assets/refresh.svg";
-import more from "../../assets/moreVert.svg";
-import dropDown from "../../assets/dropDown.svg";
-import archive from "../../assets/archive.svg";
-import report from "../../assets/report.svg";
-import moveTo from "../../assets/fileMove.svg";
-import read from "../../assets/mailRead.svg";
-import unread from "../../assets/mailUnread.svg";
-import _delete from "../../assets/delete.svg";
+import {
+  checkBoxBlankIcon,
+  checkBoxFilledIcon,
+  refreshIcon,
+  moreVertIcon,
+  dropDownIcon,
+  archiveIcon,
+  reportIcon,
+  fileMoveIcon,
+  mailReadIcon,
+  mailUnreadIcon,
+  deleteIcon,
+} from "../../assets/index";
 
 import styles from "./Actions.module.css";
 import IconButton from "../IconButton/IconButton";
@@ -18,18 +20,23 @@ function MailActions() {
     <div className={styles.mailActions}>
       <div>
         <IconButton
-          src={archive}
+          src={archiveIcon}
           alt="Archive"
           onClick={() => null}
           width={20}
         />
       </div>
       <div>
-        <IconButton src={report} alt="Report" onClick={() => null} width={20} />
+        <IconButton
+          src={reportIcon}
+          alt="Report"
+          onClick={() => null}
+          width={20}
+        />
       </div>
       <div>
         <IconButton
-          src={_delete}
+          src={deleteIcon}
           alt="Delete"
           onClick={() => null}
           width={20}
@@ -37,10 +44,20 @@ function MailActions() {
       </div>
       <div></div>
       <div>
-        <IconButton src={unread} alt="unread" onClick={() => null} width={20} />
+        <IconButton
+          src={mailUnreadIcon}
+          alt="unread"
+          onClick={() => null}
+          width={20}
+        />
       </div>
       <div>
-        <IconButton src={moveTo} alt="moveTo" onClick={() => null} width={20} />
+        <IconButton
+          src={fileMoveIcon}
+          alt="Move"
+          onClick={() => null}
+          width={20}
+        />
       </div>
     </div>
   );
@@ -55,7 +72,7 @@ function Actions() {
         <span>
           {isChecked ? (
             <IconButton
-              src={checkBoxFilled}
+              src={checkBoxFilledIcon}
               onClick={() => null}
               alt="Select"
               width={20}
@@ -63,7 +80,7 @@ function Actions() {
             />
           ) : (
             <IconButton
-              src={checkBoxBlank}
+              src={checkBoxBlankIcon}
               onClick={() => null}
               alt="Select"
               width={20}
@@ -71,9 +88,9 @@ function Actions() {
             />
           )}
         </span>
-        <span className={''}>
+        <span className={""}>
           <IconButton
-            src={dropDown}
+            src={dropDownIcon}
             alt=""
             onClick={() => null}
             width={20}
@@ -86,7 +103,7 @@ function Actions() {
       ) : (
         <div>
           <IconButton
-            src={refresh}
+            src={refreshIcon}
             onClick={() => null}
             alt="Refresh"
             width={20}
@@ -94,7 +111,12 @@ function Actions() {
         </div>
       )}
       <div>
-        <IconButton src={more} onClick={() => null} alt="More" width={20} />
+        <IconButton
+          src={moreVertIcon}
+          onClick={() => null}
+          alt="More"
+          width={20}
+        />
       </div>
     </div>
   );
