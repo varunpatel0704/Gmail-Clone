@@ -23,7 +23,7 @@
 }
 
 .contentContainer{    
-  flex: 1 0 auto;  
+  flex: 1 1 auto;  
   display: flex;
   flex-direction: column;
   border-radius: 15px;
@@ -33,4 +33,5 @@
 .content{  
   flex: 1;
   overflow-y: auto;
+  padding-right: 1rem;
 }

@@ -30,7 +30,7 @@ import settingsIcon from './settings.svg';
 import starIcon from './star.svg';
 import tasksIcon from './tasks.svg';
 import tuneIcon from './tune.svg';
-
+import openNewIcon from './openInNew.svg';
 // PNG imports
 import logoGmail from './logo_gmail.png';
 
@@ -68,4 +68,5 @@ export {
   tasksIcon,
   tuneIcon,
   logoGmail,
+  openNewIcon
 };

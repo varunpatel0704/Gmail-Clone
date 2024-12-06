@@ -21,7 +21,7 @@ function MainLayout() {
             <ToolBar />
           </div>
           <div className={styles.content}>
-            {/* <Outlet />*/}            
+            <Outlet />            
           </div>
         </main>
         <aside className={styles.appBar}>

@@ -1,0 +1,53 @@
+.mailItem{
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;
+
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;      
+
+  border: 1px solid rgba(0, 0, 0, 0.05);  
+  border-inline-color: transparent;
+  
+  &:hover{   
+    cursor: pointer;    
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .checkBoxContainer{
+    display: flex;        
+  }
+
+  .iconContainer{
+    display: flex;   
+    column-gap: 0.3rem;
+  }
+
+  .sender{    
+    width: 15%;   
+    font-weight: 500;
+  }
+
+  .body{
+    flex: 1;
+
+    .title{
+      font-weight: 500;
+    }
+
+    .content{
+      color: rgba(0, 0, 0, 0.6);
+    }    
+  }
+
+  .timeStamp{
+    font-size: small;
+    font-weight: 500;
+    padding:0 0.5rem;
+  }
+}
+
+.read{  
+  background-color: rgb(242, 246, 254);  
+}

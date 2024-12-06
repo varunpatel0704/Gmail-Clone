@@ -1,0 +1,7 @@
+.container{
+  >ul{
+    &:hover{
+      cursor: pointer;
+    }    
+  }
+}

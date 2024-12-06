@@ -7,24 +7,24 @@
   flex-shrink: 0;
 }
 
-.topBar, .topBarMid, .topBarLeft, .topBarRight{
-  flex-shrink: 0;
+.topBar, .topBarMid, .topBarLeft, .topBarRight{  
   display: flex;
-  align-items: center;
-  /* outline: 1px solid; */
+  align-items: center;  
 }
 
-.topBar{    
+.topBar{      
   height: 4rem;  
   align-items: unset;
   padding-inline: 0.5rem;  
+  width: 100%;
 }
 
 .topBarLeft{
-  width: 15.5rem;
+  max-width: 15.5rem;
+  min-width: 10rem;
+  flex: 1;
   justify-content: start;
   column-gap: 0.5rem;
-  /* padding-left: 0.5rem; */
 }
 
 .topBarMid{
