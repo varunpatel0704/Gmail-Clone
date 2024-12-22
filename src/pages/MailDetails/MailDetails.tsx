@@ -1,14 +1,14 @@
 import { forwardIcon, moreVertIcon, replyIcon, starIcon } from "../../assets";
-import { useState } from "react";
 import IconButton from "../../components/IconButton/IconButton";
 import ToolBar from "../../components/ToolBar/ToolBar";
 import styles from "./MailDetails.module.css";
 
 function MailDetails() {
-  const [toolBarChecked, setToolBarChecked] = useState<{
-    checkedCount: number;
-  }>({ checkedCount: 0 }); // todo refactor this to control checkbox visibility based on url
+  // const [toolBarChecked, setToolBarChecked] = useState<{
+  //   checkedCount: number;
+  // }>({ checkedCount: 0 }); // todo: refactor this to control checkbox visibility based on url
 
+  
   const subject =
     "Plan active on JioFiber connection having JioFixedVoice Number +917935623660";
   const from = "notifications_jiofiber@jio.com";
@@ -16,10 +16,7 @@ function MailDetails() {
   return (
     <section className={styles.container}>
       <div>
-        <ToolBar
-          setToolBarChecked={setToolBarChecked}
-          toolBarChecked={toolBarChecked}
-          enableCheckbox={false}
+        <ToolBar                    
         />
       </div>
 
