@@ -9,8 +9,8 @@ function Pagination() {
   return (
     <div className={styles.container}>
       <div className={styles.text}><span>{start}</span>–<span>{end}</span> of <span>{total}</span></div>
-      <div><IconButton src={leftIcon} onClick={()=>null} alt="Newer" width={20}/></div>
-      <div><IconButton src={rightIcon} onClick={()=>null} alt="Older" width={20}/></div>      
+      <div className={styles.icon}><IconButton src={leftIcon} onClick={()=>null} alt="Newer" width={20}/></div>
+      <div className={styles.icon}><IconButton src={rightIcon} onClick={()=>null} alt="Older" width={20}/></div>      
     </div>
   )
 }

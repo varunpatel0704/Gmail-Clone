@@ -24,14 +24,23 @@
     column-gap: 0.3rem;
   }
 
-  .sender{    
+  .from{    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     width: 15%;   
+    max-width: 12rem;
+    padding-right: 2.5rem;
     font-weight: 500;
   }
 
   .body{
     flex: 1;
 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /*show ellipsis => '...' at after text overflows from the container*/
+    
     .title{
       font-weight: 500;
     }
@@ -44,7 +53,7 @@
   .timeStamp{
     font-size: small;
     font-weight: 500;
-    padding:0 0.5rem;
+    padding: 0 0.5rem 0 2.5rem;
   }
 }
 

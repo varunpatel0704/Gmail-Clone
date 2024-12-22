@@ -4,7 +4,7 @@ import styles from "./IconButton.module.css";
 type IconButtonProps = {
   src: string;
   alt: string;
-  onClick: (event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>) => void;
   style?: string;
   width?: number;
   height?: number;

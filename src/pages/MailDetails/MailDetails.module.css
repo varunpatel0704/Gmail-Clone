@@ -1,0 +1,113 @@
+.container {
+  height: 100%;
+    
+  display: flex;
+  flex-direction: column;
+
+  .content {    
+    flex: 1;    
+    overflow-y: auto;
+    padding-right: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    /* display: grid;
+    grid-template-columns: minmax(4.5rem, auto) 1fr;
+    grid-auto-rows: minmax(max-content, auto);
+    >*{
+      outline: 1px solid;
+    }
+    aside{      
+      grid-row: 1/4;
+    } */
+  }
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: normal;
+  padding: 1rem;
+  padding-left: 4.5rem;
+}
+
+.info {   
+  font-size: 0.95rem;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+
+  .pfp {
+    width: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+    }
+  }
+
+  >div{
+    flex: 1;    
+    display: flex;    
+    justify-content: space-between;
+    align-items: start;    
+  }
+}
+
+.details{
+  .from{
+    font-weight: 500;
+  }
+  .menu{
+    display: flex;
+    font-size: 0.8rem;
+    color: rgba(0,0,0,0.7);
+  }
+}
+
+.actions {
+  color: rgba(0,0,0,0.7);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding-right: 0.5rem;
+}
+
+.body{
+  font-size: 0.85rem;
+  padding-top: 0.5rem;
+  padding-left: 4.5rem;
+}
+
+.footer{
+  margin-top: 1rem;
+  padding: 1rem 4.5rem;  
+  display: flex;
+  gap: 0.5rem;
+  
+  .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(0,0,0,0.7);
+
+    padding: 0.4rem 1.1rem;
+    background: transparent;
+  
+    
+    border: 1px solid rgba(0,0,0,0.6);
+    border-radius: 30px;
+    
+    &:hover{
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.05);
+    }
+  }
+}
