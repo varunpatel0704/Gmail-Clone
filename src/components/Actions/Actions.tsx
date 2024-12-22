@@ -1,19 +1,19 @@
 import {
+  archiveIcon,
+  arrowBackIcon,
   checkBoxBlankIcon,
   checkBoxFilledIcon,
-  refreshIcon,
-  moreVertIcon,
-  dropDownIcon,
-  archiveIcon,
-  reportIcon,
-  fileMoveIcon,
-  mailReadIcon,
-  mailUnreadIcon,
   deleteIcon,
+  dropDownIcon,
+  fileMoveIcon,
+  mailUnreadIcon,
+  moreVertIcon,
+  refreshIcon,
+  reportIcon
 } from "../../assets/index";
+import IconButton from "../IconButton/IconButton";
 
 import styles from "./Actions.module.css";
-import IconButton from "../IconButton/IconButton";
 
 function MailActions() {
   return (
@@ -63,30 +63,30 @@ function MailActions() {
   );
 }
 
-function Actions() {
-  const isActive = true;
-  const isChecked = false;
-  return (
-    <div className={styles.div}>
-      <div className={styles.checkBoxContainer}>
+export interface ActionsProps{
+  enableCheckbox?: boolean;
+  toolBarChecked: {checkedCount:number}; // if count=0=>uncheck
+  setToolBarChecked: React.Dispatch<React.SetStateAction<{checkedCount:number}>>;
+}
+
+function Actions({ toolBarChecked:{checkedCount}, setToolBarChecked, enableCheckbox=true }: ActionsProps) {
+  
+  let content: React.ReactNode;
+  if (!enableCheckbox) {
+    content = (
+      <IconButton src={arrowBackIcon} alt="Back" onClick={() => null} width={20} /> //navigate back
+    );
+  } else if (checkedCount>0) {
+    content = (
+      <>
         <span>
-          {isChecked ? (
-            <IconButton
-              src={checkBoxFilledIcon}
-              onClick={() => null}
-              alt="Select"
-              width={20}
-              style={styles.checkbox}
-            />
-          ) : (
-            <IconButton
-              src={checkBoxBlankIcon}
-              onClick={() => null}
-              alt="Select"
-              width={20}
-              style={styles.checkbox}
-            />
-          )}
+          <IconButton
+            src={checkBoxFilledIcon}
+            onClick={() => setToolBarChecked({checkedCount:0})} // TODO: clicking this should unselect all the mail items => addtional logic required
+            alt="Select"
+            width={20}
+            style={styles.checkbox}
+          />
         </span>
         <span className={""}>
           <IconButton
@@ -97,8 +97,39 @@ function Actions() {
             style={styles.dropdown}
           />
         </span>
+      </>
+    );
+  } else {
+    content = (
+      <>
+        <span>
+          <IconButton
+            src={checkBoxBlankIcon}
+            onClick={() => setToolBarChecked({checkedCount:1})} // TODO: clicking this should select all the mail items => addtional logic required
+            alt="Select"
+            width={20}
+            style={styles.checkbox}
+          />
+        </span>
+        <span className={""}>
+          <IconButton
+            src={dropDownIcon}
+            alt=""
+            onClick={() => null}
+            width={20}
+            style={styles.dropdown}
+          />
+        </span>
+      </>
+    );
+  }
+
+  return (
+    <div className={styles.div}>
+      <div className={styles.checkBoxContainer}>
+        {content}
       </div>
-      {isActive ? (
+      {checkedCount>0 ? (
         <MailActions />
       ) : (
         <div>

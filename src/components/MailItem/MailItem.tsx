@@ -1,54 +1,107 @@
+import { useState } from "react";
 import IconButton from "../IconButton/IconButton";
 import {
   archiveIcon,
   checkBoxBlankIcon,
+  checkBoxFilledIcon,
   clockIcon,
   deleteIcon,
+  mailReadIcon,
   mailUnreadIcon,
+  starFilledIcon,
   starIcon,
 } from "../../assets";
 import styles from "./MailItem.module.css";
+import { Mail } from "../MailList/MailList";
 
-function MailItem({ read = false }: { read?: boolean }) {
-  const title = "Codeforces Round 990";
-  const content =
-    " - Attention the round is about to start! on Tuesday 8:30 pm IST";
-  const sender = "noreply";
+interface MailItemProps extends Mail {
+  toolBarChecked: { checkedCount: number };
+  setToolBarChecked: React.Dispatch<
+    React.SetStateAction<{ checkedCount: number }>
+  >;
+}
 
-  const focus = true;
+function MailItem({
+  checked: _checked,
+  starred: _starred,
+  read: _read,
+  body,
+  date, // use this to calculate timestamp
+  from,
+  subject,
+  toolBarChecked,
+  setToolBarChecked,
+}: MailItemProps) {
+  const [focus, setFocus] = useState<boolean>(false);
+
+  const [checked, setChecked] = useState<boolean>(_checked); // also synchronize the toolbar checkbox's state with this one
+  const [read, setRead] = useState<boolean>(_read);
+  const [starred, setStarred] = useState<boolean>(_starred);
 
   return (
-    <div className={`${styles.mailItem} ${read && styles.read}`}>
+    <div
+      className={`${styles.mailItem} ${read && styles.read}`}
+      onMouseEnter={() => setFocus(true)}
+      onMouseLeave={() => setFocus(false)}
+    >
       <div className={styles.checkBoxContainer}>
         <div>
-          <IconButton
-            src={checkBoxBlankIcon}
-            alt="Select"
-            onClick={() => null}
-            width={20}
-          />
+          {checked ? (
+            <IconButton
+              src={checkBoxFilledIcon}
+              alt="Select"
+              onClick={() => {
+                setChecked(false);
+                setToolBarChecked(({ checkedCount }) => ({
+                  checkedCount: checkedCount - 1,
+                }));
+              }}
+              width={20}
+            />
+          ) : (
+            <IconButton
+              src={checkBoxBlankIcon}
+              alt="Select"
+              onClick={() => {
+                setChecked(true);
+                setToolBarChecked(({ checkedCount }) => ({
+                  checkedCount: checkedCount + 1,
+                }));
+              }}
+              width={20}
+            />
+          )}
         </div>
 
         <div>
-          <IconButton
-            src={starIcon}
-            alt="Starred"
-            onClick={() => null}
-            width={20}
-          />
+          {starred ? (
+            <IconButton
+              src={starFilledIcon}
+              alt="Starred"
+              onClick={() => setStarred(false)}
+              width={20}
+            />
+          ) : (
+            <IconButton
+              src={starIcon}
+              alt="Starred"
+              onClick={() => setStarred(true)}
+              width={20}
+            />
+          )}
         </div>
       </div>
 
-      <div className={styles.sender}>
-        <span>{sender}</span>
+      <div className={styles.from}>
+        <span>{from}</span>
       </div>
 
       <div className={styles.body}>
-        <span className={styles.title}>{title}</span>
-        <span className={styles.content}>{content}</span>
+        <span className={styles.title}>{subject}</span>
+        <span className={styles.content}>{" - " + body}</span>
       </div>
 
-      {focus ? (
+      {focus ? ( // on hover
         <div className={styles.iconContainer}>
           <div>
             <IconButton
@@ -67,12 +120,21 @@ function MailItem({ read = false }: { read?: boolean }) {
             />
           </div>
           <div>
-            <IconButton
-              src={mailUnreadIcon}
-              alt="Unread"
-              onClick={() => null}
-              width={20}
-            />
+            {read ? (
+              <IconButton
+                src={mailUnreadIcon}
+                alt="Unread"
+                onClick={() => setRead(false)}
+                width={20}
+              />
+            ) : (
+              <IconButton
+                src={mailReadIcon}
+                alt="Read"
+                onClick={() => setRead(true)}
+                width={20}
+              />
+            )}
           </div>
           <div>
             <IconButton
@@ -84,7 +146,7 @@ function MailItem({ read = false }: { read?: boolean }) {
           </div>
         </div>
       ) : (
-        <span className={styles.timeStamp}>8:30 PM</span>
+        <span className={styles.timeStamp}>8:30 PM</span> // add date variable
       )}
     </div>
   );

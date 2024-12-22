@@ -1,4 +1,5 @@
 // SVG imports
+import forwardIcon from './forward.svg';
 import addIcon from './add.svg';
 import appsIcon from './apps.svg';
 import archiveIcon from './archive.svg';
@@ -28,9 +29,15 @@ import searchIcon from './search.svg';
 import sendIcon from './send.svg';
 import settingsIcon from './settings.svg';
 import starIcon from './star.svg';
+import starFilledIcon from './starFilled.svg';
 import tasksIcon from './tasks.svg';
 import tuneIcon from './tune.svg';
 import openNewIcon from './openInNew.svg';
+import replyIcon from './reply.svg';
+import arrowForwardIcon from './arrowForward.svg';
+import arrowBackIcon from './arrowBack.svg';
+import upIcon from './up.svg';
+import draftIcon from './draft.svg';
 // PNG imports
 import logoGmail from './logo_gmail.png';
 
@@ -68,5 +75,12 @@ export {
   tasksIcon,
   tuneIcon,
   logoGmail,
-  openNewIcon
+  openNewIcon,
+  replyIcon,
+  forwardIcon,
+  arrowForwardIcon,
+  arrowBackIcon,
+  upIcon,
+  draftIcon,
+  starFilledIcon,
 };

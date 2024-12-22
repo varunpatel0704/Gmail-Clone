@@ -4,34 +4,28 @@
   flex-direction: column;
 }
 
-.wrapper{      
+.wrapper{   
   flex: 1;
   display: flex;    
   justify-content: space-between;
-  overflow: auto; /*removing this will ruin the fullscreen layout => scrollbar appears, why?*/
+  overflow-y: auto;
+  padding-bottom: 1rem;
 }
 
 .sideBar{
   flex-shrink: 0;
   max-width: 16rem;    
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .appBar{
   flex-shrink: 0;
-  overflow: auto;
+  overflow-y: auto;
 }
 
-.contentContainer{    
-  flex: 1 1 auto;  
-  display: flex;
-  flex-direction: column;
+.container{    
+  flex: 1;
   border-radius: 15px;
   background: white;
-}
-
-.content{  
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 1rem;
+  overflow: auto;
 }
