@@ -1,14 +1,14 @@
-import {
-  forwardIcon,
-  moreVertIcon,
-  replyIcon,
-  starIcon
-} from "../../assets";
+import { forwardIcon, moreVertIcon, replyIcon, starIcon } from "../../assets";
+import { useState } from "react";
 import IconButton from "../../components/IconButton/IconButton";
 import ToolBar from "../../components/ToolBar/ToolBar";
 import styles from "./MailDetails.module.css";
 
 function MailDetails() {
+  const [toolBarChecked, setToolBarChecked] = useState<{
+    checkedCount: number;
+  }>({ checkedCount: 0 }); // todo refactor this to control checkbox visibility based on url
+
   const subject =
     "Plan active on JioFiber connection having JioFixedVoice Number +917935623660";
   const from = "notifications_jiofiber@jio.com";
@@ -16,7 +16,11 @@ function MailDetails() {
   return (
     <section className={styles.container}>
       <div>
-        <ToolBar checkbox={false}/>
+        <ToolBar
+          setToolBarChecked={setToolBarChecked}
+          toolBarChecked={toolBarChecked}
+          enableCheckbox={false}
+        />
       </div>
 
       <div className={styles.content}>
@@ -77,28 +81,33 @@ function MailDetails() {
         </h2>
 
         <p className={styles.body}>
-        Dear Customer,
-<br/>
-<br/>
-Thank you for choosing JioFiber.
-<br/>
-<br/>
-Your plan JioFiber_1M_399 is now active on JioFiber connection having JioFixedVoice Number+917935623660.
-<br/>
-<br/>
-As part of the plan, you are entitled to the following benefits: Benefits 1. Unlimited Data @ 30 Mbps 2. Unlimited Voice Validity - 30 days
-<br/>
-<br/>
-To view your current and upcoming plan details, click http://tiny1.jio.com/MyJioFiberPlan
-<br/>
-<br/>
-For any support, call us on 18008969999.
-<br/>
-<br/>
-Thank you,<br/>
-Team JioFiber
-        </p>       
-        
+          Dear Customer,
+          <br />
+          <br />
+          Thank you for choosing JioFiber.
+          <br />
+          <br />
+          Your plan JioFiber_1M_399 is now active on JioFiber connection having
+          JioFixedVoice Number+917935623660.
+          <br />
+          <br />
+          As part of the plan, you are entitled to the following benefits:
+          Benefits 1. Unlimited Data @ 30 Mbps 2. Unlimited Voice Validity - 30
+          days
+          <br />
+          <br />
+          To view your current and upcoming plan details, click
+          http://tiny1.jio.com/MyJioFiberPlan
+          <br />
+          <br />
+          For any support, call us on 18008969999.
+          <br />
+          <br />
+          Thank you,
+          <br />
+          Team JioFiber
+        </p>
+
         <p className={styles.footer}>
           <button className={styles.btn}>
             <img src={replyIcon} alt="Reply" width={20} />
@@ -107,7 +116,7 @@ Team JioFiber
           <button className={styles.btn}>
             <img src={forwardIcon} alt="Forward" width={20} />
             <span>Forward</span>
-          </button>          
+          </button>
         </p>
       </div>
     </section>

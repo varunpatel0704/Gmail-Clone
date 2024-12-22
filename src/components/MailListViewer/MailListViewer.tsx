@@ -14,6 +14,8 @@ function MailListViewer({ category }: { category: string }) {
       </div>
       <section className={styles.content}>
         <MailList category={category} toolBarChecked={toolBarChecked} setToolBarChecked={setToolBarChecked} />                
+        <MailList category={category} toolBarChecked={toolBarChecked} setToolBarChecked={setToolBarChecked} />                
+        <MailList category={category} toolBarChecked={toolBarChecked} setToolBarChecked={setToolBarChecked} />                
         <Footer />                
       </section>      
     </section>
