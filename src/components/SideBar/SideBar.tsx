@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   addIcon,
   clockIcon,
@@ -15,10 +15,11 @@ import {
 } from "../../assets";
 import IconButton from "../IconButton/IconButton";
 import styles from "./SideBar.module.css";
+import { ToogleContext } from "../../contexts/ToogleProvider";
 
-interface NavListItemProps extends NavListItem{
+interface NavListItemProps extends NavListItem {
   visible: boolean;
-  hoverEffect?:boolean;
+  hoverEffect?: boolean;
 }
 
 function NavListItem({
@@ -37,18 +38,17 @@ function NavListItem({
       className={`${styles.navLi} ${
         visible ? `${styles.show} ${styles.active}` : styles.hide
       }`}
-      onClick={()=>{        
-        if(path){
-          console.log(path);  
+      onClick={() => {
+        if (path) {
+          console.log(path);
           navigate(path);
-        }
-        else if(onClick) onClick();
+        } else if (onClick) onClick();
       }}
     >
       <div className={styles.iconContainer}>
         <IconButton
           src={src}
-          alt={title}                                               
+          alt={title}
           hoverEffect={hoverEffect}
           width={iconWidth}
         />
@@ -68,9 +68,9 @@ interface NavListItem {
   src: string;
   title: string;
   options?: { hasValue: boolean; value: string | number };
-  path?:string;
-  onClick?():void;
-  iconWidth?:number;
+  path?: string;
+  onClick?(): void;
+  iconWidth?: number;
 }
 const navListItemsInitial: NavListItem[] = [
   {
@@ -83,34 +83,34 @@ const navListItemsInitial: NavListItem[] = [
   },
   {
     title: "Inbox",
-    src: inboxIcon,    
+    src: inboxIcon,
     options: {
       hasValue: true,
       value: 4152,
     },
-    path: '/inbox',
+    iconWidth:20,
+    path: "/inbox",
   },
   {
     title: "Starred",
     src: starIcon,
-    path: '/starred',
+    iconWidth:20,
+    path: "/starred",
   },
   {
     title: "Snoozed",
     src: clockIcon,
-    path: '/snoozed',
-
+    path: "/snoozed",
   },
   {
     title: "Sent",
     src: sendIcon,
-    path: '/sent',
-
+    path: "/sent",
   },
   {
     title: "More",
-    src: downIcon,    
-  },  
+    src: downIcon,
+  },
   // {
   //   src: addIcon,
   //   title: "Labels",
@@ -126,34 +126,36 @@ const navListItemsExtended: NavListItem[] = [
     title: "Drafts",
     src: draftIcon,
     iconWidth: 20,
-    path: '/drafts',
+    path: "/drafts",
   },
   {
     title: "Spam",
     src: reportIcon,
     iconWidth: 20,
-    path: '/spam',
+    path: "/spam",
   },
   {
     title: "Bin",
     src: deleteIcon,
     iconWidth: 20,
-    path: '/bin',
+    path: "/bin",
   },
-]
+];
 
 function SideBar() {
-  const visible = true;  
+  const { showSideBar: visible } = useContext(ToogleContext);
+
   const [showMore, setShowMore] = useState<boolean>(false);
-  
+
   let listItems: NavListItem[];
-  navListItemsInitial.at(-1)!.onClick = ()=>setShowMore(true); // more
-  navListItemsExtended.at(0)!.onClick = ()=>setShowMore(false); // less
-  
-  if(showMore){
-    listItems = navListItemsInitial.concat(navListItemsExtended).filter(item=>item.title !== 'More');       
-  }
-  else listItems = navListItemsInitial;
+  navListItemsInitial.at(-1)!.onClick = () => setShowMore(true); // more
+  navListItemsExtended.at(0)!.onClick = () => setShowMore(false); // less
+
+  if (showMore) {
+    listItems = navListItemsInitial
+      .concat(navListItemsExtended)
+      .filter((item) => item.title !== "More");
+  } else listItems = navListItemsInitial;
 
   return (
     <nav className={styles.navigation}>

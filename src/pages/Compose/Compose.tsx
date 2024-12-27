@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import { closeIcon, deleteIcon } from "../../assets";
 import IconButton from "../../components/IconButton/IconButton";
 import styles from "./Compose.module.css";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 // function Input({desc, placeholder}:{desc?:string; placeholder?:string}) {
 //   return (
@@ -18,16 +20,14 @@ function Compose({
   visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const modalRef=useRef<HTMLDivElement>(null);
+  useOnClickOutside(modalRef, ()=>setVisible(false))
   const title = "New Message";
   return (
     <div
-      className={`${styles.modal} ${!visible && styles.hide}`}
-      onClick={() => {
-        console.log("modal clicked");
-        setVisible(false);
-      }}
+      className={`${styles.modal} ${!visible && styles.hide}`}      
     >
-      <div className={styles.compose} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.compose} ref={modalRef}>
         <h2>
           <span>{title}</span>
           <span>

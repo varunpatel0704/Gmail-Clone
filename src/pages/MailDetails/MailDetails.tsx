@@ -1,14 +1,44 @@
-import { forwardIcon, moreVertIcon, replyIcon, starIcon } from "../../assets";
+import { useRef, useState } from "react";
+import {
+  dropDownIcon,
+  forwardIcon,
+  moreVertIcon,
+  replyIcon,
+  starIcon,
+} from "../../assets";
 import IconButton from "../../components/IconButton/IconButton";
 import ToolBar from "../../components/ToolBar/ToolBar";
 import styles from "./MailDetails.module.css";
+import { useParams } from "react-router-dom";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+
+function MailInfoItem({ field, value }: { field: string; value: string }) {
+  return (
+    <div className={styles.infoItem}>
+      <p className={styles.field}>{field+':'}</p>
+      <p className={styles.value}>{value}</p>
+    </div>
+  );
+}
 
 function MailDetails() {
-  // const [toolBarChecked, setToolBarChecked] = useState<{
-  //   checkedCount: number;
-  // }>({ checkedCount: 0 }); // todo: refactor this to control checkbox visibility based on url
+  const { id } = useParams(); // use id to fetch mail details
+  const details = [
+    { field: "from", value: "notifications_jiofiber@jio.com" },
+    { field: "to", value: "varun.dh.7@gmail.com" },
+    { field: "date", value: "25 Dec 2024, 10:21" },
+    {
+      field: "subject",
+      value: "Portfolio_Holding_Summary report since inception",
+    },
+    { field: "mailed-by", value: "motilaloswal.com" },
+    { field: "signed-by", value: "motilaloswal.com" },
+  ]; 
+  const [visible, setVisible] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  
+  useOnClickOutside(ref, ()=>setVisible(false));
+
   const subject =
     "Plan active on JioFiber connection having JioFixedVoice Number +917935623660";
   const from = "notifications_jiofiber@jio.com";
@@ -16,8 +46,7 @@ function MailDetails() {
   return (
     <section className={styles.container}>
       <div>
-        <ToolBar                    
-        />
+        <ToolBar />
       </div>
 
       <div className={styles.content}>
@@ -34,17 +63,30 @@ function MailDetails() {
           <div>
             <div className={styles.details}>
               <p className={styles.from}>{from}</p>
-              <p className={styles.menu}>
-                <span>to me</span>{" "}
-                <span>
-                  {/* <IconButton
-                    src={dropDownIcon}
-                    alt="Details"
-                    onClick={() => null}
-                    width={18}                    
-                  /> */}
-                </span>
-              </p>
+
+              <div className={styles.menu}>
+                <span>to me</span>
+
+                <section className={styles.dropdownContainer} >
+                  <button
+                    className={styles.dropdownBtn}
+                    onClick={() => setVisible(!visible)}                  
+                  >
+                    <img src={dropDownIcon} alt="Details" width={18} />
+                  </button>
+
+                  <div
+                    className={`${styles.dropdownContent} ${
+                      visible && styles.showContent
+                    }`}                    
+                    ref={ref}
+                  >
+                    {details.map(({ field, value }) => (
+                      <MailInfoItem key={field} field={field} value={value} />
+                    ))}
+                  </div>
+                </section>
+              </div>
             </div>
 
             <div className={styles.actions}>

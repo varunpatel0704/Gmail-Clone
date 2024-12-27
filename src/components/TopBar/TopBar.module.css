@@ -1,6 +1,8 @@
 .gmailLogo{   
   width: 7rem;    
   object-fit: contain;
+
+  cursor: pointer;
 }
 
 .iconContainer{
@@ -20,11 +22,12 @@
 }
 
 .topBarLeft{
-  max-width: 15.5rem;
+  max-width: 15rem;
   min-width: 10rem;
   flex: 1;
   justify-content: start;
   column-gap: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .topBarMid{

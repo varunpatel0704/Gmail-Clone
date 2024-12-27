@@ -33,7 +33,7 @@ For any support, call us on 18008969999.
 
 Thank you,
 Team JioFiber`,
-    checked: true,
+    checked: false,
     starred: true,
     read: false,
     date: "9 Dec 2024, 10:22",
@@ -195,7 +195,7 @@ function MailList({
   category,
   toolBarChecked,
   setToolBarChecked,
-}: {
+}:{
   category: string;
   toolBarChecked: {checkedCount:number};
   setToolBarChecked: React.Dispatch<React.SetStateAction<{checkedCount:number}>>;
