@@ -15,7 +15,7 @@ import useOnClickOutside from "../../hooks/useOnClickOutside";
 function MailInfoItem({ field, value }: { field: string; value: string }) {
   return (
     <div className={styles.infoItem}>
-      <p className={styles.field}>{field+':'}</p>
+      <p className={styles.field}>{field + ":"}</p>
       <p className={styles.value}>{value}</p>
     </div>
   );
@@ -33,11 +33,11 @@ function MailDetails() {
     },
     { field: "mailed-by", value: "motilaloswal.com" },
     { field: "signed-by", value: "motilaloswal.com" },
-  ]; 
+  ];
   const [visible, setVisible] = useState<boolean>(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
-  useOnClickOutside(ref, ()=>setVisible(false));
+  useOnClickOutside(ref, () => setVisible(false));
 
   const subject =
     "Plan active on JioFiber connection having JioFixedVoice Number +917935623660";
@@ -67,10 +67,13 @@ function MailDetails() {
               <div className={styles.menu}>
                 <span>to me</span>
 
-                <section className={styles.dropdownContainer} >
+                <section className={styles.dropdownContainer} ref={ref}>
                   <button
                     className={styles.dropdownBtn}
-                    onClick={() => setVisible(!visible)}                  
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVisible(!visible);
+                    }}
                   >
                     <img src={dropDownIcon} alt="Details" width={18} />
                   </button>
@@ -78,8 +81,7 @@ function MailDetails() {
                   <div
                     className={`${styles.dropdownContent} ${
                       visible && styles.showContent
-                    }`}                    
-                    ref={ref}
+                    }`}
                   >
                     {details.map(({ field, value }) => (
                       <MailInfoItem key={field} field={field} value={value} />

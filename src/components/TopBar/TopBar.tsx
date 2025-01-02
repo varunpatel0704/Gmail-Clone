@@ -1,28 +1,38 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  settingsIcon,
-  menuIcon,
-  logoGmail,
-  helpIcon,
   appsIcon,
+  helpIcon,
+  logoGmail,
+  menuIcon,
+  settingsIcon,
 } from "../../assets";
-
+import { SideBarContext } from "../../contexts/SideBarProvider";
 import IconButton from "../IconButton/IconButton";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./TopBar.module.css";
-import { useContext } from "react";
-import { ToogleContext } from "../../contexts/ToogleProvider";
+import { DrawerContext } from "../../contexts/DrawerProvider";
 
 function TopBar() {
   const navigate = useNavigate();
-  const {setShowSideBar}=useContext(ToogleContext);
+  const { setShowSideBar } = useContext(SideBarContext);
+  const {setShowAppDrawer} = useContext(DrawerContext);
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarLeft}>
         <div className={styles.iconContainer}>
-          <IconButton src={menuIcon} alt="Menu" onClick={() => setShowSideBar(show=>!show)} />
+          <IconButton
+            src={menuIcon}
+            alt="Menu"
+            onClick={() => setShowSideBar((show) => !show)}
+          />
         </div>
-        <img src={logoGmail} alt="Gmail Logo" className={styles.gmailLogo} onClick={()=>navigate('/inbox')}/>
+        <img
+          src={logoGmail}
+          alt="Gmail Logo"
+          className={styles.gmailLogo}
+          onClick={() => navigate("/inbox")}
+        />
       </div>
 
       <div className={styles.topBarMid}>
@@ -32,15 +42,22 @@ function TopBar() {
       </div>
 
       <div className={styles.topBarRight}>
-        <div className={styles.iconContainer}>          
-          <IconButton onClick={() => null} src={helpIcon} alt="Help" />          
+        <div className={styles.iconContainer}>
+          <IconButton onClick={() => null} src={helpIcon} alt="Help" />
         </div>
+
         <div className={styles.iconContainer}>
           <IconButton onClick={() => null} src={settingsIcon} alt="Settings" />
         </div>
-        <div className={styles.iconContainer}>
-          <IconButton onClick={() => null} src={appsIcon} alt="Apps" />
+
+        <div className={styles.dropdownBtn}>
+          <IconButton
+            onClick={() => setShowAppDrawer(s=>!s)}
+            src={appsIcon}
+            alt="Apps"
+          />
         </div>
+
         <div className={styles.iconContainer}>
           <IconButton onClick={() => null} src={helpIcon} alt="Profile" />
         </div>

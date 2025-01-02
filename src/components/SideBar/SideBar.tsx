@@ -15,7 +15,8 @@ import {
 } from "../../assets";
 import IconButton from "../IconButton/IconButton";
 import styles from "./SideBar.module.css";
-import { ToogleContext } from "../../contexts/ToogleProvider";
+import { SideBarContext } from "../../contexts/SideBarProvider";
+import { ComposeContext } from "../../contexts/ComposeProvider";
 
 interface NavListItemProps extends NavListItem {
   visible: boolean;
@@ -76,7 +77,7 @@ const navListItemsInitial: NavListItem[] = [
   {
     title: "Compose",
     src: composeIcon,
-    
+
     onClick() {
       //set compose state to be visible
     },
@@ -88,13 +89,13 @@ const navListItemsInitial: NavListItem[] = [
       hasValue: true,
       value: 4152,
     },
-    iconWidth:20,
+    iconWidth: 20,
     path: "/inbox",
   },
   {
     title: "Starred",
     src: starIcon,
-    iconWidth:20,
+    iconWidth: 20,
     path: "/starred",
   },
   {
@@ -143,11 +144,12 @@ const navListItemsExtended: NavListItem[] = [
 ];
 
 function SideBar() {
-  const { showSideBar: visible } = useContext(ToogleContext);
-
+  const { showSideBar: visible } = useContext(SideBarContext);
+  const { setShowCompose } = useContext(ComposeContext);
   const [showMore, setShowMore] = useState<boolean>(false);
 
   let listItems: NavListItem[];
+  navListItemsInitial.at(0)!.onClick = () => setShowCompose(true); // show compose modal
   navListItemsInitial.at(-1)!.onClick = () => setShowMore(true); // more
   navListItemsExtended.at(0)!.onClick = () => setShowMore(false); // less
 
