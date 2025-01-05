@@ -11,32 +11,35 @@ import Snoozed from "./pages/Snoozed/Snoozed";
 import { SideBarProvider } from "./contexts/SideBarProvider";
 import { DrawerProvider } from "./contexts/DrawerProvider";
 import { ComposeProvider } from "./contexts/ComposeProvider";
+import { SettingsProvider } from "./contexts/SettingsProvider";
 
 function App() {
   return (
     <SideBarProvider>
       <DrawerProvider>
-        <ComposeProvider>
-          <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route path="inbox" index element={<Inbox />} />
+        <SettingsProvider>
+          <ComposeProvider>
+            <Routes>
+              <Route path="/" element={<MainLayout />}>
+                <Route path="inbox" index element={<Inbox />} />
 
-              <Route path="sent" element={<Sent />} />
+                <Route path="sent" element={<Sent />} />
 
-              <Route path="starred" element={<Starred />} />
+                <Route path="starred" element={<Starred />} />
 
-              <Route path="snoozed" element={<Snoozed />} />
+                <Route path="snoozed" element={<Snoozed />} />
 
-              <Route path="drafts" element={<Drafts />} />
+                <Route path="drafts" element={<Drafts />} />
 
-              <Route path="spam" element={<Spam />} />
+                <Route path="spam" element={<Spam />} />
 
-              <Route path="bin" element={<Bin />} />
+                <Route path="bin" element={<Bin />} />
 
-              <Route path="email/:id" element={<MailDetails />} />
-            </Route>
-          </Routes>
-        </ComposeProvider>
+                <Route path="email/:id" element={<MailDetails />} />
+              </Route>
+            </Routes>
+          </ComposeProvider>
+        </SettingsProvider>
       </DrawerProvider>
     </SideBarProvider>
   );

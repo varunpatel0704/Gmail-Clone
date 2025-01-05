@@ -12,11 +12,14 @@ import IconButton from "../IconButton/IconButton";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./TopBar.module.css";
 import { DrawerContext } from "../../contexts/DrawerProvider";
+import { SettingsContext } from "../../contexts/SettingsProvider";
 
 function TopBar() {
   const navigate = useNavigate();
   const { setShowSideBar } = useContext(SideBarContext);
-  const {setShowAppDrawer} = useContext(DrawerContext);
+  const { setShowAppDrawer } = useContext(DrawerContext);
+  const { setShowSettings } = useContext(SettingsContext);
+
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarLeft}>
@@ -47,12 +50,16 @@ function TopBar() {
         </div>
 
         <div className={styles.iconContainer}>
-          <IconButton onClick={() => null} src={settingsIcon} alt="Settings" />
+          <IconButton
+            onClick={() => setShowSettings((s) => !s)}
+            src={settingsIcon}
+            alt="Settings"
+          />
         </div>
 
         <div className={styles.dropdownBtn}>
           <IconButton
-            onClick={() => setShowAppDrawer(s=>!s)}
+            onClick={() => setShowAppDrawer((s) => !s)}
             src={appsIcon}
             alt="Apps"
           />

@@ -10,11 +10,13 @@ import { useContext, useRef } from "react";
 import { DrawerContext } from "../../contexts/DrawerProvider";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import Settings from "../Settings/Settings";
+import { SettingsContext } from "../../contexts/SettingsProvider";
 
 function MainLayout() {
   const { showAppDrawer, setShowAppDrawer } = useContext(DrawerContext);
+  const { showSettings } = useContext(SettingsContext);
   const drawerRef = useRef<HTMLDivElement>(null);
-  useOnClickOutside(drawerRef, ()=>setShowAppDrawer(false));
+  useOnClickOutside(drawerRef, () => setShowAppDrawer(false));
 
   return (
     <main className={styles.mainLayout}>
@@ -33,14 +35,14 @@ function MainLayout() {
           <Outlet />
         </main>
 
+        {/* Settings Pane */}
+        {showSettings && <aside>
+          <Settings />
+        </aside>}
+
         {/* Appbar */}
         <aside className={styles.appBar}>
           <AppBar />
-        </aside>
-
-        {/* Settings Pane */}
-        <aside>
-          <Settings/>
         </aside>
 
         {/* App drawer */}
