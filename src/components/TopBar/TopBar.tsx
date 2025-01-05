@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   appsIcon,
@@ -13,12 +13,17 @@ import SearchBar from "../SearchBar/SearchBar";
 import styles from "./TopBar.module.css";
 import { DrawerContext } from "../../contexts/DrawerProvider";
 import { SettingsContext } from "../../contexts/SettingsProvider";
+import AppDrawer from "../AppDrawer/AppDrawer";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 function TopBar() {
   const navigate = useNavigate();
   const { setShowSideBar } = useContext(SideBarContext);
-  const { setShowAppDrawer } = useContext(DrawerContext);
+  const { showAppDrawer, setShowAppDrawer } = useContext(DrawerContext);
   const { setShowSettings } = useContext(SettingsContext);
+
+  const drawerRef = useRef<HTMLDivElement>(null);
+  useOnClickOutside(drawerRef, () => setShowAppDrawer(false));
 
   return (
     <div className={styles.topBar}>
@@ -57,12 +62,21 @@ function TopBar() {
           />
         </div>
 
-        <div className={styles.dropdownBtn}>
-          <IconButton
-            onClick={() => setShowAppDrawer((s) => !s)}
-            src={appsIcon}
-            alt="Apps"
-          />
+        <div ref={drawerRef}>
+          <div>
+            <IconButton
+              onClick={() => setShowAppDrawer((s) => !s)}
+              src={appsIcon}
+              alt="Apps"
+            />
+          </div>
+          <div
+            className={`${styles.appDrawer} ${
+              showAppDrawer && styles.showDrawer
+            }`}
+          >
+            <AppDrawer />
+          </div>
         </div>
 
         <div className={styles.iconContainer}>

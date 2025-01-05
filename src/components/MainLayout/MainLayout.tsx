@@ -5,18 +5,12 @@ import SideBar from "../SideBar/SideBar";
 import TopBar from "../TopBar/TopBar";
 import styles from "./MainLayout.module.css";
 
-import AppDrawer from "../AppDrawer/AppDrawer";
-import { useContext, useRef } from "react";
-import { DrawerContext } from "../../contexts/DrawerProvider";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
-import Settings from "../Settings/Settings";
+import { useContext } from "react";
 import { SettingsContext } from "../../contexts/SettingsProvider";
+import Settings from "../Settings/Settings";
 
 function MainLayout() {
-  const { showAppDrawer, setShowAppDrawer } = useContext(DrawerContext);
   const { showSettings } = useContext(SettingsContext);
-  const drawerRef = useRef<HTMLDivElement>(null);
-  useOnClickOutside(drawerRef, () => setShowAppDrawer(false));
 
   return (
     <main className={styles.mainLayout}>
@@ -36,9 +30,11 @@ function MainLayout() {
         </main>
 
         {/* Settings Pane */}
-        {showSettings && <aside>
-          <Settings />
-        </aside>}
+        {showSettings && (
+          <aside>
+            <Settings />
+          </aside>
+        )}
 
         {/* Appbar */}
         <aside className={styles.appBar}>
@@ -46,14 +42,14 @@ function MainLayout() {
         </aside>
 
         {/* App drawer */}
-        <div
+        {/* <div
           className={`${styles.appDrawer} ${
             showAppDrawer && styles.showDrawer
           }`}
           ref={drawerRef}
         >
           <AppDrawer />
-        </div>
+        </div> */}
       </section>
       <Compose />
     </main>
