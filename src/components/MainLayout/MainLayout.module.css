@@ -30,3 +30,8 @@
   background: white;
   overflow: auto;
 }
+
+.settings{
+  max-width: 20rem;
+  margin-left: 1rem;
+}

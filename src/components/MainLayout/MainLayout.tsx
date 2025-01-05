@@ -31,7 +31,7 @@ function MainLayout() {
 
         {/* Settings Pane */}
         {showSettings && (
-          <aside>
+          <aside className={styles.settings}>
             <Settings />
           </aside>
         )}
@@ -40,16 +40,7 @@ function MainLayout() {
         <aside className={styles.appBar}>
           <AppBar />
         </aside>
-
-        {/* App drawer */}
-        {/* <div
-          className={`${styles.appDrawer} ${
-            showAppDrawer && styles.showDrawer
-          }`}
-          ref={drawerRef}
-        >
-          <AppDrawer />
-        </div> */}
+        
       </section>
       <Compose />
     </main>
