@@ -1,0 +1,43 @@
+.content{  
+  padding: 1.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  border-radius: 19px;
+  background-color: white;   
+}
+
+.app{  
+  padding: 0.8rem;
+  padding-bottom: 0.4rem;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5rem;
+  
+  cursor: pointer;
+
+  border-radius: 18px;
+
+  &:hover{
+    background-color: rgb(242, 246, 254);
+  }
+}
+
+.appIcon{
+  width: 3.5rem;  
+  display: flex;
+  justify-content: center;
+  
+  .icon{   
+    max-width: 100%;
+  }
+}
+
+.appLabel{  
+  font-size: 0.9rem;
+}

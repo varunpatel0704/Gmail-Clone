@@ -13,6 +13,7 @@ import {
 } from "../../assets";
 import styles from "./MailItem.module.css";
 import { Mail } from "../MailList/MailList";
+import { useNavigate } from "react-router-dom";
 
 interface MailItemProps extends Mail {
   toolBarChecked: { checkedCount: number };
@@ -22,6 +23,7 @@ interface MailItemProps extends Mail {
 }
 
 function MailItem({
+  id,
   checked: _checked,
   starred: _starred,
   read: _read,
@@ -32,6 +34,8 @@ function MailItem({
   toolBarChecked,
   setToolBarChecked,
 }: MailItemProps) {
+  const navigate = useNavigate();
+
   const [focus, setFocus] = useState<boolean>(false);
 
   const [checked, setChecked] = useState<boolean>(_checked); // also synchronize the toolbar checkbox's state with this one
@@ -43,6 +47,7 @@ function MailItem({
       className={`${styles.mailItem} ${read && styles.read}`}
       onMouseEnter={() => setFocus(true)}
       onMouseLeave={() => setFocus(false)}
+      onClick={() => navigate(`/email/${id}`)}
     >
       <div className={styles.checkBoxContainer}>
         <div>
@@ -50,7 +55,8 @@ function MailItem({
             <IconButton
               src={checkBoxFilledIcon}
               alt="Select"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setChecked(false);
                 setToolBarChecked(({ checkedCount }) => ({
                   checkedCount: checkedCount - 1,
@@ -62,7 +68,8 @@ function MailItem({
             <IconButton
               src={checkBoxBlankIcon}
               alt="Select"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setChecked(true);
                 setToolBarChecked(({ checkedCount }) => ({
                   checkedCount: checkedCount + 1,
@@ -78,14 +85,20 @@ function MailItem({
             <IconButton
               src={starFilledIcon}
               alt="Starred"
-              onClick={() => setStarred(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setStarred(false);
+              }}
               width={20}
             />
           ) : (
             <IconButton
               src={starIcon}
               alt="Starred"
-              onClick={() => setStarred(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setStarred(true);
+              }}
               width={20}
             />
           )}

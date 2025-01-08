@@ -1,6 +1,9 @@
+import { useContext, useRef } from "react";
 import { closeIcon, deleteIcon } from "../../assets";
 import IconButton from "../../components/IconButton/IconButton";
 import styles from "./Compose.module.css";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+import { ComposeContext } from "../../contexts/ComposeProvider";
 
 // function Input({desc, placeholder}:{desc?:string; placeholder?:string}) {
 //   return (
@@ -11,31 +14,24 @@ import styles from "./Compose.module.css";
 //   );
 // }
 
-function Compose({
-  visible,
-  setVisible,
-}: {
-  visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function Compose() {
+  const { showCompose, setShowCompose } = useContext(ComposeContext);
+  const modalRef = useRef<HTMLDivElement>(null);
   const title = "New Message";
+  
+  useOnClickOutside(modalRef, () => setShowCompose(false));
+  
   return (
-    <div
-      className={`${styles.modal} ${!visible && styles.hide}`}
-      onClick={() => {
-        console.log("modal clicked");
-        setVisible(false);
-      }}
-    >
-      <div className={styles.compose} onClick={(e) => e.stopPropagation()}>
+    <div className={`${styles.modal} ${!showCompose && styles.hide}`}>
+      <div className={styles.compose} ref={modalRef}>
         <h2>
           <span>{title}</span>
           <span>
             <IconButton
-              src={closeIcon} 
+              src={closeIcon}
               alt="Close"
               width={15}
-              onClick={() => setVisible(false)} //save and close
+              onClick={() => setShowCompose(false)} //save and close
             />
           </span>
         </h2>{" "}
@@ -55,7 +51,7 @@ function Compose({
             <div>
               <IconButton
                 src={deleteIcon}
-                alt="Delete" 
+                alt="Delete"
                 width={15}
                 onClick={() => null} //delete draft
               />

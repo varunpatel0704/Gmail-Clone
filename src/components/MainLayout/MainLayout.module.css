@@ -10,6 +10,7 @@
   justify-content: space-between;
   overflow-y: auto;
   padding-bottom: 1rem;
+  position: relative; /*for app drawer*/
 }
 
 .sideBar{
@@ -28,4 +29,9 @@
   border-radius: 15px;
   background: white;
   overflow: auto;
+}
+
+.settings{
+  max-width: 20rem;
+  margin-left: 1rem;
 }
