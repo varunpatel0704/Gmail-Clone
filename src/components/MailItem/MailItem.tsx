@@ -34,7 +34,6 @@ function MailItem({
   toolBarChecked,
   setToolBarChecked,
 }: MailItemProps) {
-  
   const navigate = useNavigate();
 
   const [focus, setFocus] = useState<boolean>(false);
@@ -48,7 +47,7 @@ function MailItem({
       className={`${styles.mailItem} ${read && styles.read}`}
       onMouseEnter={() => setFocus(true)}
       onMouseLeave={() => setFocus(false)}
-      onClick={()=>navigate(`/email/${id}`)}
+      onClick={() => navigate(`/email/${id}`)}
     >
       <div className={styles.checkBoxContainer}>
         <div>
@@ -56,7 +55,8 @@ function MailItem({
             <IconButton
               src={checkBoxFilledIcon}
               alt="Select"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setChecked(false);
                 setToolBarChecked(({ checkedCount }) => ({
                   checkedCount: checkedCount - 1,
@@ -68,7 +68,8 @@ function MailItem({
             <IconButton
               src={checkBoxBlankIcon}
               alt="Select"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setChecked(true);
                 setToolBarChecked(({ checkedCount }) => ({
                   checkedCount: checkedCount + 1,
@@ -84,14 +85,20 @@ function MailItem({
             <IconButton
               src={starFilledIcon}
               alt="Starred"
-              onClick={() => setStarred(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setStarred(false);
+              }}
               width={20}
             />
           ) : (
             <IconButton
               src={starIcon}
               alt="Starred"
-              onClick={() => setStarred(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setStarred(true);
+              }}
               width={20}
             />
           )}

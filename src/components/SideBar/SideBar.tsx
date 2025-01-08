@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import {
   addIcon,
@@ -34,10 +34,12 @@ function NavListItem({
   iconWidth,
 }: NavListItemProps) {
   const navigate = useNavigate();
+  const {pathname} = useLocation();
+  const active = pathname.includes(path||'') && title !== 'More' && title!== 'Less';
   return (
     <li
       className={`${styles.navLi} ${
-        visible ? `${styles.show} ${styles.active}` : styles.hide
+        visible ? `${styles.show} ${active && styles.active} ${!active && styles.hover}` : styles.hide
       }`}
       onClick={() => {
         if (path) {

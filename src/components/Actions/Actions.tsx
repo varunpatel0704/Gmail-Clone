@@ -14,7 +14,7 @@ import {
 import IconButton from "../IconButton/IconButton";
 
 import styles from "./Actions.module.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function MailActions() {
   return (
@@ -73,6 +73,8 @@ export interface ActionsProps {
 
 function Actions({ toolBarChecked, setToolBarChecked }: ActionsProps) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   const hideCheckbox = pathname.includes("email");
 
   const checkedCount = toolBarChecked?.checkedCount;
@@ -85,7 +87,7 @@ function Actions({ toolBarChecked, setToolBarChecked }: ActionsProps) {
           <IconButton
             src={arrowBackIcon}
             alt="Back"
-            onClick={() => null} //navigate back
+            onClick={() => navigate(-1)} //navigate back
             width={20}
           />
         </div>

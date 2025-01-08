@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   dropDownIcon,
   forwardIcon,
@@ -8,9 +9,8 @@ import {
 } from "../../assets";
 import IconButton from "../../components/IconButton/IconButton";
 import ToolBar from "../../components/ToolBar/ToolBar";
-import styles from "./MailDetails.module.css";
-import { useParams } from "react-router-dom";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import styles from "./MailDetails.module.css";
 
 function MailInfoItem({ field, value }: { field: string; value: string }) {
   return (
@@ -36,7 +36,6 @@ function MailDetails() {
   ];
   const [visible, setVisible] = useState<boolean>(false);
   const ref = useRef<HTMLElement>(null);
-
   useOnClickOutside(ref, () => setVisible(false));
 
   const subject =
