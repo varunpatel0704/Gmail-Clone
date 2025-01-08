@@ -1,7 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
-  addIcon,
   clockIcon,
   composeIcon,
   deleteIcon,
@@ -11,12 +10,12 @@ import {
   reportIcon,
   sendIcon,
   starIcon,
-  upIcon,
+  upIcon
 } from "../../assets";
+import { ComposeContext } from "../../contexts/ComposeProvider";
+import { SideBarContext } from "../../contexts/SideBarProvider";
 import IconButton from "../IconButton/IconButton";
 import styles from "./SideBar.module.css";
-import { SideBarContext } from "../../contexts/SideBarProvider";
-import { ComposeContext } from "../../contexts/ComposeProvider";
 
 interface NavListItemProps extends NavListItem {
   visible: boolean;
